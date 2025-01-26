@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Iceland Gambia Flyer</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Arial', sans-serif;
+            background-color: #fdf1f0;
+            color: #444;
+        }
+
+        .flyer {
+            max-width: 800px;
+            margin: 20px auto;
+            background: linear-gradient(135deg, #ffe5e0, #fff4f4);
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .header {
+            background: linear-gradient(135deg, #ff8a80, #ff5252);
+            color: white;
+            padding: 20px;
+            text-align: center;
+            font-size: 2.5rem;
+            font-weight: bold;
+            text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+        }
+
+        .content {
+            padding: 20px;
+        }
+
+        .content h2 {
+            font-size: 2rem;
+            color: #ff5252;
+            text-align: center;
+            margin-bottom: 10px;
+        }
+
+        .offerings {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            justify-content: center;
+            margin-bottom: 20px;
+        }
+
+        .offerings div {
+            width: 150px;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            padding: 10px;
+            position: relative;
+        }
+
+        .offerings div::before {
+            content: '';
+            position: absolute;
+            top: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 30px;
+            height: 30px;
+            background: radial-gradient(circle, #ff8a80, #ff5252);
+            border-radius: 50%;
+            box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        .offerings div img {
+            width: 100%;
+            border-radius: 10px;
+        }
+
+        .offerings div p {
+            margin: 10px 0 0;
+            font-size: 1rem;
+        }
+
+        .location {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .location p {
+            margin: 5px 0;
+        }
+
+        .cta {
+            text-align: center;
+            margin: 20px 0;
+        }
+
+        .cta button {
+            background: #ff5252;
+            color: white;
+            border: none;
+            border-radius: 10px;
+            padding: 10px 20px;
+            font-size: 1.2rem;
+            cursor: pointer;
+            box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+            transition: background 0.3s;
+        }
+
+        .cta button:hover {
+            background: #ff8a80;
+        }
+
+        .decorative {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            background: linear-gradient(135deg, transparent 70%, rgba(255, 82, 82, 0.3));
+            z-index: -1;
+        }
+
+        .decorative-circle {
+            position: absolute;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #ff5252, #ffe5e0);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        .circle1 {
+            width: 100px;
+            height: 100px;
+            top: -50px;
+            left: -50px;
+        }
+
+        .circle2 {
+            width: 150px;
+            height: 150px;
+            bottom: -75px;
+            right: -75px;
+        }
+
+        footer {
+            background: #ff5252;
+            color: white;
+            text-align: center;
+            padding: 10px;
+            border-top-left-radius: 20px;
+            border-top-right-radius: 20px;
+        }
+
+        footer p {
+            margin: 0;
+        }
+
+        footer a {
+            color: white;
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <div class="flyer">
+        <div class="decorative">
+            <div class="decorative-circle circle1"></div>
+            <div class="decorative-circle circle2"></div>
+        </div>
+        <div class="header">
+            Iceland Gambia
+        </div>
+        <div class="content">
+            <h2>Delicious Treats Await You!</h2>
+            <div class="offerings">
+                <div>
+                    <img src="https://via.placeholder.com/150" alt="Ice Cream">
+                    <p>Ice Cream</p>
+                </div>
+                <div>
+                    <img src="https://via.placeholder.com/150" alt="Thai Rolled Ice Cream">
+                    <p>Thai Rolled Ice Cream</p>
+                </div>
+                <div>
+                    <img src="https://via.placeholder.com/150" alt="Waffles">
+                    <p>Waffles</p>
+                </div>
+                <div>
+                    <img src="https://via.placeholder.com/150" alt="Crepes">
+                    <p>Crepes</p>
+                </div>
+                <div>
+                    <img src="https://via.placeholder.com/150" alt="Milkshakes">
+                    <p>Milkshakes</p>
+                </div>
+            </div>
+
+            <div class="location">
+                <h2>Visit Us</h2>
+                <p>📍 Location: Near Fajara Traffic Light</p>
+                <p>⛪ Before Holy Family Church</p>
+            </div>
+
+            <div class="cta">
+                <button onclick="alert('Call us at +220 2666626!')">Call Now: +220 2666626</button>
+            </div>
+        </div>
+
+        <footer>
+            <p>Follow us on <a href="https://www.instagram.com/iceland.gambia/">Instagram</a> | <a href="https://www.facebook.com/Iceland-Gambia-100063927070203">Facebook</a></p>
+        </footer>
+    </div>
+</body>
+</html>
