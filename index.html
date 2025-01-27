@@ -3,273 +3,369 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Iceland - Gambia</title>
+    <title>ICELAND - Digital Menu</title>
     <style>
-        :root {
-            --primary: #ff69b4;
-            --secondary: #40e0d0;
-            --background: #f5f5f5;
-            --text: #333;
-        }
-
-        * {
+        body {
+            font-family: 'Comic Sans MS', cursive, sans-serif;
             margin: 0;
             padding: 0;
-            box-sizing: border-box;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(to bottom, #f0f8ff, #ffebcd);
+            color: #333;
         }
 
-        body {
-            background: var(--background);
-            min-height: 100vh;
-            padding: 2rem;
-        }
-
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-
-        .header {
+        header {
+            background-color: #ff7f50;
+            color: white;
+            padding: 1rem 2rem;
             text-align: center;
-            margin-bottom: 2rem;
-            position: relative;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
         }
 
-        .header h1 {
-            font-size: 3.5rem;
-            color: var(--primary);
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
-            margin-bottom: 1rem;
+        header h1 {
+            font-size: 2.5rem;
+            margin: 0;
+            text-shadow: 2px 2px #ff6347;
         }
 
-        .header::after {
-            content: '🍦';
-            font-size: 2rem;
-            position: absolute;
-            right: 25%;
-            top: 0;
-            animation: float 3s ease-in-out infinite;
-        }
-
-        .header::before {
-            content: '🥤';
-            font-size: 2rem;
-            position: absolute;
-            left: 25%;
-            top: 0;
-            animation: float 3s ease-in-out infinite reverse;
-        }
-
-        @keyframes float {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-10px); }
-        }
-
-        .category-select {
-            width: 100%;
-            max-width: 400px;
-            margin: 0 auto 2rem;
-            padding: 1rem;
-            border: 2px solid var(--primary);
-            border-radius: 10px;
-            background: white;
-            font-size: 1.1rem;
+        header select {
+            margin-top: 1rem;
+            padding: 0.5rem;
+            font-size: 1rem;
+            border-radius: 4px;
+            border: 1px solid #ddd;
             cursor: pointer;
-            transition: all 0.3s ease;
         }
 
-        .category-select:hover {
-            transform: scale(1.02);
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        main {
+            max-width: 1100px;
+            margin: 2rem auto;
+            padding: 2rem;
+            background-color: #fff;
+            border-radius: 16px;
+            box-shadow: 0 6px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        .menu-section {
+            margin-bottom: 2.5rem;
+        }
+
+        .menu-section h2 {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            font-size: 2rem;
+            background-color: #ffa07a;
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 12px;
+            text-shadow: 1px 1px #cd5c5c;
+        }
+
+        .menu-section img {
+            width: 60px;
+            height: 60px;
+            object-fit: cover;
+            border-radius: 50%;
+            border: 2px solid white;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
         }
 
         .menu-items {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-            gap: 2rem;
-            padding: 1rem;
+            margin-top: 1rem;
+            list-style: none;
+            padding: 0;
         }
 
-        .menu-item {
-            background: white;
-            border-radius: 15px;
-            padding: 1.5rem;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-            transition: all 0.3s ease;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .menu-item:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
-        }
-
-        .menu-item::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 5px;
-            background: linear-gradient(to right, var(--primary), var(--secondary));
-        }
-
-        .menu-item h3 {
-            color: var(--primary);
-            margin-bottom: 0.5rem;
-            font-size: 1.3rem;
-        }
-
-        .menu-item p {
-            color: var(--text);
-            margin-bottom: 0.5rem;
-            font-size: 0.9rem;
-            opacity: 0.8;
-        }
-
-        .price {
-            font-weight: bold;
-            color: var(--secondary);
-            font-size: 1.2rem;
+        .menu-items li {
+            padding: 0.7rem 0;
+            border-bottom: 1px dashed #ddd;
             display: flex;
-            align-items: center;
-            gap: 0.25rem;
+            justify-content: space-between;
+            font-size: 1.2rem;
         }
 
-        .price::before {
-            content: 'D';
-            font-size: 0.8em;
-            opacity: 0.8;
+        .menu-items li:last-child {
+            border-bottom: none;
         }
 
-        @media (max-width: 768px) {
-            .header h1 {
-                font-size: 2.5rem;
-            }
-            
-            .header::before,
-            .header::after {
-                display: none;
-            }
-            
-            .menu-items {
-                grid-template-columns: 1fr;
-            }
+        footer {
+            text-align: center;
+            margin: 2rem 0;
+            font-size: 0.9rem;
+            color: #555;
+        }
+
+        .hidden {
+            display: none;
         }
     </style>
 </head>
 <body>
-    <div class="container">
-        <div class="header">
-            <h1>Iceland</h1>
-            <p>Gambia's Favorite Ice Cream Shop</p>
-        </div>
-
-        <select class="category-select" id="categorySelect">
-            <option value="all">All Items</option>
+    <header>
+        <h1>ICELAND</h1>
+        <select id="dietPreference" onchange="filterMenu()">
+            <option value="all">All</option>
             <option value="cocktails">Cocktails</option>
+            <option value="mojitos">Mojitos</option>
+            <option value="ice-tea">Ice Tea</option>
             <option value="frappes">Frappés</option>
             <option value="smoothies">Smoothies</option>
-            <option value="hot">Hot Drinks</option>
-            <option value="soft">Soft Drinks</option>
-            <option value="fresh">Fresh Juice</option>
-            <option value="lemonade">Lemonade</option>
+            <option value="milkshakes">Milkshakes</option>
+            <option value="hot-drinks">Hot Drinks</option>
+            <option value="lemonades">Lemonades</option>
+            <option value="soft-drinks">Soft Drinks</option>
+            <option value="fresh-juice">Fresh Juice</option>
+            <option value="ice-cream">Ice Cream Specials</option>
+            <option value="kids-corner">Kids Corner</option>
+            <option value="crepes">Crepes</option>
+            <option value="pancakes">Pancakes</option>
         </select>
+    </header>
 
-        <div class="menu-items" id="menuItems"></div>
+    <main>
+    <!-- Cocktails Section -->
+    <div class="menu-section" data-category="cocktails">
+        <h2><img src="cocktails.jpg" alt="Cocktails"> Cocktails</h2>
+        <ul class="menu-items">
+            <li><span>Red Punch</span><span>D 250</span></li>
+            <li><span>IceLand Cocktail</span><span>D 250</span></li>
+            <li><span>Dolce Diabolo</span><span>D 250</span></li>
+            <li><span>Virgin Punch</span><span>D 250</span></li>
+        </ul>
     </div>
 
-    <script>
-        const menuData = {
-            cocktails: [
-                { name: 'Red Heaven', description: 'Red Bull, strawberry, passion, grenadine', price: 250 },
-                { name: 'Blue Hawaii', description: 'Strawberry, pineapple, sprite, blue syrup', price: 250 },
-                { name: 'Summer Cocktail', description: 'Peach, coconut, banana', price: 250 },
-                { name: 'Red Punch', description: 'Red Bull, strawberry, blackberry', price: 250 },
-                { name: 'Iceland Cocktail', description: 'Strawberry, bubble gum, Red Bull', price: 250 },
-                { name: 'Dolce Diabolo', description: 'Mango, pear, lemon, soda', price: 250 },
-                { name: 'Virgin Punch', description: 'Pineapple, passion, lemon', price: 250 },
-                { name: 'After Glow', description: 'Orange, pineapple juice, grenadine syrup', price: 250 },
-                { name: 'Bora Bora', description: 'Pineapple, passion, grenadine, lemon', price: 250 },
-                { name: 'Blue Lagoon', description: 'Orange, lemon, coconut', price: 250 },
-                { name: 'Punch Watermelon', description: 'Blackberry, watermelon, lemon, mint, tonic', price: 250 }
-            ],
-            frappes: [
-                { name: 'Ice Coffee', description: 'Coffee, ice, whipped cream', price: 300 },
-                { name: 'Caramel', description: 'Caramel, coffee, ice, whipped cream', price: 300 },
-                { name: 'Mocka', description: 'Coffee, chocolate, ice, whipped cream', price: 300 },
-                { name: 'Speculos', description: 'Coffee, speculos, ice, whipped cream', price: 300 },
-                { name: 'Cafe Latte', description: 'Coffee, vanilla, ice, whipped cream', price: 300 }
-            ],
-            smoothies: [
-                { name: 'Cocktail', description: 'Strawberry, mango, pineapple, passion, orange', price: 250 },
-                { name: 'Tropical', description: 'Mango, passion, peach, orange, pineapple', price: 250 },
-                { name: 'Pina Colada', description: 'Pineapple, coconut', price: 250 },
-                { name: 'Banana Split', description: 'Banana, strawberry, chocolate', price: 250 },
-                { name: 'Fruits', description: 'Strawberry, banana, red fruits, peach, passion', price: 250 }
-            ],
-            hot: [
-                { name: 'Espresso', description: 'Classic espresso shot', price: 100 },
-                { name: 'Long Espresso', description: 'Extended espresso shot', price: 150 },
-                { name: 'Cappuccino', description: 'Espresso with steamed milk', price: 200 },
-                { name: 'Hot Chocolate', description: 'Rich hot chocolate', price: 200 },
-                { name: 'Cafe Mocha', description: 'Coffee with chocolate', price: 200 }
-            ],
-            soft: [
-                { name: 'Can Drink', description: 'Coke - Fanta - Sprite', price: 65 },
-                { name: 'Vimto', description: 'Classic Vimto drink', price: 100 },
-                { name: 'Diet Coke', description: 'Sugar-free cola', price: 100 },
-                { name: 'Red Bull', description: 'Energy drink', price: 250 },
-                { name: 'Mineral Water', description: 'Small', price: 30 }
-            ],
-            fresh: [
-                { name: 'Apple', description: 'Fresh apple juice', price: 250 },
-                { name: 'Carrot', description: 'Fresh carrot juice', price: 250 },
-                { name: 'Orange', description: 'Fresh orange juice', price: 250 },
-                { name: 'Strawberry', description: 'Fresh strawberry juice', price: 250 },
-                { name: 'Kiwi', description: 'Fresh kiwi juice', price: 250 }
-            ],
-            lemonade: [
-                { name: 'Frozen Mint', description: 'Lemon, ice, mint', price: 200 },
-                { name: 'Pink Grapefruit', description: 'Lemon, grapefruit, ice', price: 200 },
-                { name: 'Lemonada', description: 'Lemon & ice', price: 200 }
-            ]
-        };
+    <!-- Mojitos Section -->
+    <div class="menu-section" data-category="mojitos">
+        <h2><img src="mojitos.jpg" alt="Mojitos"> Mojitos</h2>
+        <ul class="menu-items">
+            <li><span>Virgin Mojito</span><span>D 300</span></li>
+            <li><span>Fruits Mojito (Passion, Watermelon, or Kiwi)</span><span>D 300</span></li>
+        </ul>
+    </div>
 
-        function displayMenuItems(category) {
-            const menuContainer = document.getElementById('menuItems');
-            menuContainer.innerHTML = '';
-            
-            let itemsToDisplay = [];
-            
-            if (category === 'all') {
-                Object.values(menuData).forEach(items => {
-                    itemsToDisplay = itemsToDisplay.concat(items);
-                });
-            } else {
-                itemsToDisplay = menuData[category] || [];
-            }
-            
-            itemsToDisplay.forEach(item => {
-                const menuItem = document.createElement('div');
-                menuItem.className = 'menu-item';
-                menuItem.innerHTML = `
-                    <h3>${item.name}</h3>
-                    <p>${item.description}</p>
-                    <div class="price">${item.price}</div>
-                `;
-                menuContainer.appendChild(menuItem);
+    <!-- Ice Tea Section -->
+    <div class="menu-section" data-category="ice-tea">
+        <h2><img src="ice-tea.jpg" alt="Ice Tea"> Ice Tea</h2>
+        <ul class="menu-items">
+            <li><span>Peach, Lemon, Raspberry, or Mango</span><span>D 200</span></li>
+            <li><span>Raspberry & Cherry</span><span>D 250</span></li>
+            <li><span>Raspberry & Passion</span><span>D 250</span></li>
+            <li><span>Peach & Passion</span><span>D 250</span></li>
+            <li><span>Peach, Ginger, and Pineapple</span><span>D 200</span></li>
+        </ul>
+    </div>
+
+    <!-- Frappés Section -->
+    <div class="menu-section" data-category="frappes">
+        <h2><img src="frappes.jpg" alt="Frappés"> Frappés</h2>
+        <ul class="menu-items">
+            <li><span>Ice Coffee</span><span>D 300</span></li>
+            <li><span>Caramel</span><span>D 300</span></li>
+            <li><span>Mocka</span><span>D 300</span></li>
+            <li><span>Speculos</span><span>D 300</span></li>
+            <li><span>Cafe Latte</span><span>D 300</span></li>
+        </ul>
+    </div>
+
+    <!-- Smoothies Section -->
+    <div class="menu-section" data-category="smoothies">
+        <h2><img src="smoothies.jpg" alt="Smoothies"> Smoothies</h2>
+        <ul class="menu-items">
+            <li><span>Cocktail</span><span>D 250</span></li>
+            <li><span>Tropical</span><span>D 250</span></li>
+            <li><span>Pina Colada</span><span>D 250</span></li>
+            <li><span>Banana Split</span><span>D 250</span></li>
+            <li><span>Fruits (Strawberry, Banana, Red Fruits, Peach, Passion, Mango, or Kiwi)</span><span>D 250</span></li>
+            <li><span>Banana Strawberry</span><span>D 250</span></li>
+            <li><span>Banana Coconut</span><span>D 250</span></li>
+            <li><span>Tutti Frutti (Strawberry, Cherry, Black & Red Berries)</span><span>D 250</span></li>
+            <li><span>Exotic (Peach, Orange, Mango)</span><span>D 250</span></li>
+        </ul>
+    </div>
+
+    <!-- Milkshakes Section -->
+    <div class="menu-section" data-category="milkshakes">
+        <h2><img src="milkshakes.jpg" alt="Milkshakes"> Milkshakes</h2>
+        <ul class="menu-items">
+            <li><span>Compose your own shake by choosing your favorite ice cream flavor</span><span>D 300</span></li>
+        </ul>
+    </div>
+    <!-- Hot Drinks Section -->
+    <div class="menu-section" data-category="hot-drinks">
+        <h2><img src="hot-drinks.jpg" alt="Hot Drinks"> Hot Drinks</h2>
+        <ul class="menu-items">
+            <li><span>Espresso</span><span>D 100</span></li>
+            <li><span>Long Espresso</span><span>D 150</span></li>
+            <li><span>Cappuccino</span><span>D 150</span></li>
+            <li><span>Hot Chocolate</span><span>D 150</span></li>
+            <li><span>Tea (Ask for the box)</span><span>D 100</span></li>
+            <li><span>Cafe Mocha</span><span>D 200</span></li>
+            <li><span>Cafe Latte</span><span>D 200</span></li>
+            <li><span>Caramel Latte</span><span>D 200</span></li>
+            <li><span>Cookies Cafe Latte</span><span>D 200</span></li>
+            <li><span>Hazelnut Latte</span><span>D 200</span></li>
+        </ul>
+    </div>
+
+    <!-- Lemonades Section -->
+    <div class="menu-section" data-category="lemonades">
+        <h2><img src="lemonades.jpg" alt="Lemonades"> Lemonades</h2>
+        <ul class="menu-items">
+            <li><span>Frozen Mint (Lemon, Ice, Mint)</span><span>D 200</span></li>
+            <li><span>Pink Grapefruit (Lemon, Grapefruit, Ice)</span><span>D 200</span></li>
+            <li><span>Lemonada (Lemon & Ice)</span><span>D 200</span></li>
+        </ul>
+    </div>
+
+    <!-- Soft Drinks Section -->
+    <div class="menu-section" data-category="soft-drinks">
+        <h2><img src="soft-drinks.jpg" alt="Soft Drinks"> Soft Drinks</h2>
+        <ul class="menu-items">
+            <li><span>Can Drink (Coke, Fanta, Sprite)</span><span>D 65</span></li>
+            <li><span>Vimto</span><span>D 100</span></li>
+            <li><span>Diet Coke</span><span>D 250</span></li>
+            <li><span>Red Bull</span><span>D 100</span></li>
+            <li><span>Power Malt</span><span>D 100</span></li>
+            <li><span>Mineral Water (Small)</span><span>D 30</span></li>
+            <li><span>Mineral Water (Big)</span><span>D 60</span></li>
+        </ul>
+    </div>
+
+    <!-- Fresh Juice Section -->
+    <div class="menu-section" data-category="fresh-juice">
+        <h2><img src="fresh-juice.jpg" alt="Fresh Juice"> Fresh Juice</h2>
+        <ul class="menu-items">
+            <li><span>Apple</span><span>D 200</span></li>
+            <li><span>Carrot</span><span>D 200</span></li>
+            <li><span>Orange</span><span>D 200</span></li>
+            <li><span>Strawberry</span><span>D 250</span></li>
+            <li><span>Kiwi</span><span>D 250</span></li>
+            <li><span>Mango</span><span>D 250</span></li>
+            <li><span>Cocktail Juice</span><span>D 250</span></li>
+        </ul>
+    </div>
+
+    <!-- Ice Cream Specials Section -->
+    <div class="menu-section" data-category="ice-cream">
+        <h2><img src="ice-cream.jpg" alt="Ice Cream Specials"> Ice Cream Specials</h2>
+        <ul class="menu-items">
+            <li><span>Crunch</span><span>D 350</span></li>
+            <li><span>Cookies</span><span>D 350</span></li>
+            <li><span>Speculos</span><span>D 350</span></li>
+            <li><span>Oreo</span><span>D 350</span></li>
+            <li><span>Peche Melba</span><span>D 350</span></li>
+            <li><span>Brownies Ice Cream</span><span>D 350</span></li>
+            <li><span>Iceland Ice Cream</span><span>D 350</span></li>
+            <li><span>Banana Split</span><span>D 350</span></li>
+            <li><span>Dame Blanche</span><span>D 350</span></li>
+            <li><span>Chocolate Liegeois</span><span>D 350</span></li>
+            <li><span>Coupe Trois Chocolats</span><span>D 350</span></li>
+            <li><span>Coupe des Gourmands (Duo)</span><span>D 350</span></li>
+        </ul>
+    </div>
+
+    <!-- Kids Corner Section -->
+    <div class="menu-section" data-category="kids-corner">
+        <h2><img src="kids-corner.jpg" alt="Kids Corner"> Kids Corner</h2>
+        <ul class="menu-items">
+            <li><span>Snowman</span><span>D 300</span></li>
+            <li><span>Ninja Turtle</span><span>D 300</span></li>
+            <li><span>Pinocchio</span><span>D 300</span></li>
+        </ul>
+    </div>
+
+    <!-- Crepes Section -->
+    <div class="menu-section" data-category="crepes">
+        <h2><img src="crepes.jpg" alt="Crepes"> Crepes</h2>
+        <ul class="menu-items">
+            <li><span>Ice Cream Crepe (with Chocolate Sauce & Whipped Cream)</span><span>D 450</span></li>
+            <li><span>Special Ice Cream Crepe</span><span>D 450</span></li>
+            <li><span>Fettuccine Crepe</span><span>D 450</span></li>
+            <li><span>Vanilla or Chocolate Sushi</span><span>D 400</span></li>
+            <li><span>Banana Roll</span><span>D 350</span></li>
+            <li><span>Boom Crepe</span><span>D 450</span></li>
+            <li><span>Brownies Crepe</span><span>D 400</span></li>
+        </ul>
+    </div>
+
+    <!-- Pancakes Section -->
+    <div class="menu-section" data-category="pancakes">
+        <h2><img src="pancakes.jpg" alt="Pancakes"> Pancakes</h2>
+        <ul class="menu-items">
+            <li><span>Burger Pancake</span><span>D 400</span></li>
+            <li><span>Chocolate Pancake</span><span>D 400</span></li>
+            <li><span>Iceland Pancake</span><span>D 400</span></li>
+            <li><span>Honey Pancake</span><span>D 300</span></li>
+        </ul>
+    </div>
+
+    <!-- Desserts and Fruit Plates Section -->
+    <div class="menu-section" data-category="desserts">
+        <h2><img src="desserts.jpg" alt="Desserts and Fruit Plates"> Desserts & Fruit Plates</h2>
+        <ul class="menu-items">
+            <li><span>Fondue (Plate of Mixed Fruits with Hot Chocolate)</span><span>D 400</span></li>
+            <li><span>Fruit Salad with Ashta</span><span>D 400</span></li>
+            <li><span>Avocado Salad with Ashta</span><span>D 400</span></li>
+            <li><span>With Chocolate</span><span>Price not listed</span></li>
+            <li><span>Ashta Plate</span><span>D 350</span></li>
+            <li><span>Ashta Fruits Plate</span><span>D 450</span></li>
+            <li><span>Exotic Fruits Salad</span><span>D 400</span></li>
+        </ul>
+    </div>
+
+    <!-- Croissants Section -->
+    <div class="menu-section" data-category="croissants">
+        <h2><img src="croissants.jpg" alt="Croissants"> Croissants</h2>
+        <ul class="menu-items">
+            <li><span>Chocolatine</span><span>D 70</span></li>
+            <li><span>Croissant</span><span>D 70</span></li>
+            <li><span>Zaatar</span><span>D 70</span></li>
+            <li><span>Pain aux Raisins</span><span>D 80</span></li>
+            <li><span>Drops</span><span>D 80</span></li>
+        </ul>
+    </div>
+
+    <!-- Scoops and Containers Section -->
+    <div class="menu-section" data-category="scoops-containers">
+        <h2><img src="scoops.jpg" alt="Scoops and Containers"> Scoops & Containers</h2>
+        <ul class="menu-items">
+            <li><span>One Scoop</span><span>D 100</span></li>
+            <li><span>Two Scoops</span><span>D 170</span></li>
+            <li><span>Three Scoops</span><span>D 250</span></li>
+            <li><span>1.2L Container</span><span>D 400</span></li>
+            <li><span>1L Container</span><span>D 650</span></li>
+            <li><span>Ice Cream Cone</span><span>D 30</span></li>
+            <li><span>Extra Topping</span><span>D 50</span></li>
+        </ul>
+    </div>
+
+    <!-- Extras Section -->
+    <div class="menu-section" data-category="extras">
+        <h2><img src="extras.jpg" alt="Extras"> Extras</h2>
+        <ul class="menu-items">
+            <li><span>Sugar</span><span>D 200</span></li>
+            <li><span>Honey</span><span>D 200</span></li>
+        </ul>
+    </div>
+    </main>
+
+    <footer>
+        &copy; 2025 ICELAND. All rights reserved.
+    </footer>
+
+    <script>
+        function filterMenu() {
+            const selectedCategory = document.getElementById('dietPreference').value;
+            const sections = document.querySelectorAll('.menu-section');
+
+            sections.forEach(section => {
+                if (selectedCategory === 'all' || section.dataset.category === selectedCategory) {
+                    section.classList.remove('hidden');
+                } else {
+                    section.classList.add('hidden');
+                }
             });
         }
-
-        document.getElementById('categorySelect').addEventListener('change', (e) => {
-            displayMenuItems(e.target.value);
-        });
-
-        // Initial display
-        displayMenuItems('all');
     </script>
 </body>
 </html>
