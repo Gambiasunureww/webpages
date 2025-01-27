@@ -3,215 +3,273 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Iceland Gambia Flyer</title>
+    <title>Iceland - Gambia</title>
     <style>
-        body {
-            margin: 0;
-            padding: 0;
-            font-family: 'Arial', sans-serif;
-            background-color: #fdf1f0;
-            color: #444;
+        :root {
+            --primary: #ff69b4;
+            --secondary: #40e0d0;
+            --background: #f5f5f5;
+            --text: #333;
         }
 
-        .flyer {
-            max-width: 800px;
-            margin: 20px auto;
-            background: linear-gradient(135deg, #ffe5e0, #fff4f4);
-            border-radius: 20px;
-            overflow: hidden;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background: var(--background);
+            min-height: 100vh;
+            padding: 2rem;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
         }
 
         .header {
-            background: linear-gradient(135deg, #ff8a80, #ff5252);
-            color: white;
-            padding: 20px;
             text-align: center;
-            font-size: 2.5rem;
-            font-weight: bold;
-            text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
-        }
-
-        .content {
-            padding: 20px;
-        }
-
-        .content h2 {
-            font-size: 2rem;
-            color: #ff5252;
-            text-align: center;
-            margin-bottom: 10px;
-        }
-
-        .offerings {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 10px;
-            justify-content: center;
-            margin-bottom: 20px;
-        }
-
-        .offerings div {
-            width: 150px;
-            background: white;
-            border-radius: 15px;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-            text-align: center;
-            padding: 10px;
+            margin-bottom: 2rem;
             position: relative;
         }
 
-        .offerings div::before {
+        .header h1 {
+            font-size: 3.5rem;
+            color: var(--primary);
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+            margin-bottom: 1rem;
+        }
+
+        .header::after {
+            content: '🍦';
+            font-size: 2rem;
+            position: absolute;
+            right: 25%;
+            top: 0;
+            animation: float 3s ease-in-out infinite;
+        }
+
+        .header::before {
+            content: '🥤';
+            font-size: 2rem;
+            position: absolute;
+            left: 25%;
+            top: 0;
+            animation: float 3s ease-in-out infinite reverse;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+
+        .category-select {
+            width: 100%;
+            max-width: 400px;
+            margin: 0 auto 2rem;
+            padding: 1rem;
+            border: 2px solid var(--primary);
+            border-radius: 10px;
+            background: white;
+            font-size: 1.1rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .category-select:hover {
+            transform: scale(1.02);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .menu-items {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 2rem;
+            padding: 1rem;
+        }
+
+        .menu-item {
+            background: white;
+            border-radius: 15px;
+            padding: 1.5rem;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .menu-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+        }
+
+        .menu-item::before {
             content: '';
             position: absolute;
-            top: -10px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 30px;
-            height: 30px;
-            background: radial-gradient(circle, #ff8a80, #ff5252);
-            border-radius: 50%;
-            box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
-        }
-
-        .offerings div img {
-            width: 100%;
-            border-radius: 10px;
-        }
-
-        .offerings div p {
-            margin: 10px 0 0;
-            font-size: 1rem;
-        }
-
-        .location {
-            text-align: center;
-            margin-bottom: 20px;
-        }
-
-        .location p {
-            margin: 5px 0;
-        }
-
-        .cta {
-            text-align: center;
-            margin: 20px 0;
-        }
-
-        .cta button {
-            background: #ff5252;
-            color: white;
-            border: none;
-            border-radius: 10px;
-            padding: 10px 20px;
-            font-size: 1.2rem;
-            cursor: pointer;
-            box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
-            transition: background 0.3s;
-        }
-
-        .cta button:hover {
-            background: #ff8a80;
-        }
-
-        .decorative {
-            position: absolute;
-            width: 100%;
-            height: 100%;
             top: 0;
             left: 0;
-            background: linear-gradient(135deg, transparent 70%, rgba(255, 82, 82, 0.3));
-            z-index: -1;
+            width: 100%;
+            height: 5px;
+            background: linear-gradient(to right, var(--primary), var(--secondary));
         }
 
-        .decorative-circle {
-            position: absolute;
-            border-radius: 50%;
-            background: linear-gradient(135deg, #ff5252, #ffe5e0);
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        .menu-item h3 {
+            color: var(--primary);
+            margin-bottom: 0.5rem;
+            font-size: 1.3rem;
         }
 
-        .circle1 {
-            width: 100px;
-            height: 100px;
-            top: -50px;
-            left: -50px;
+        .menu-item p {
+            color: var(--text);
+            margin-bottom: 0.5rem;
+            font-size: 0.9rem;
+            opacity: 0.8;
         }
 
-        .circle2 {
-            width: 150px;
-            height: 150px;
-            bottom: -75px;
-            right: -75px;
+        .price {
+            font-weight: bold;
+            color: var(--secondary);
+            font-size: 1.2rem;
+            display: flex;
+            align-items: center;
+            gap: 0.25rem;
         }
 
-        footer {
-            background: #ff5252;
-            color: white;
-            text-align: center;
-            padding: 10px;
-            border-top-left-radius: 20px;
-            border-top-right-radius: 20px;
+        .price::before {
+            content: 'D';
+            font-size: 0.8em;
+            opacity: 0.8;
         }
 
-        footer p {
-            margin: 0;
-        }
-
-        footer a {
-            color: white;
-            text-decoration: underline;
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 2.5rem;
+            }
+            
+            .header::before,
+            .header::after {
+                display: none;
+            }
+            
+            .menu-items {
+                grid-template-columns: 1fr;
+            }
         }
     </style>
 </head>
 <body>
-    <div class="flyer">
-        <div class="decorative">
-            <div class="decorative-circle circle1"></div>
-            <div class="decorative-circle circle2"></div>
-        </div>
+    <div class="container">
         <div class="header">
-            Iceland Gambia
-        </div>
-        <div class="content">
-            <h2>Delicious Treats Await You!</h2>
-            <div class="offerings">
-                <div>
-                    <img src="https://via.placeholder.com/150" alt="Ice Cream">
-                    <p>Ice Cream</p>
-                </div>
-                <div>
-                    <img src="https://via.placeholder.com/150" alt="Thai Rolled Ice Cream">
-                    <p>Thai Rolled Ice Cream</p>
-                </div>
-                <div>
-                    <img src="https://via.placeholder.com/150" alt="Waffles">
-                    <p>Waffles</p>
-                </div>
-                <div>
-                    <img src="https://via.placeholder.com/150" alt="Crepes">
-                    <p>Crepes</p>
-                </div>
-                <div>
-                    <img src="https://via.placeholder.com/150" alt="Milkshakes">
-                    <p>Milkshakes</p>
-                </div>
-            </div>
-
-            <div class="location">
-                <h2>Visit Us</h2>
-                <p>📍 Location: Near Fajara Traffic Light</p>
-                <p>⛪ Before Holy Family Church</p>
-            </div>
-
-            <div class="cta">
-                <button onclick="alert('Call us at +220 2666626!')">Call Now: +220 2666626</button>
-            </div>
+            <h1>Iceland</h1>
+            <p>Gambia's Favorite Ice Cream Shop</p>
         </div>
 
-        <footer>
-            <p>Follow us on <a href="https://www.instagram.com/iceland.gambia/">Instagram</a> | <a href="https://www.facebook.com/Iceland-Gambia-100063927070203">Facebook</a></p>
-        </footer>
+        <select class="category-select" id="categorySelect">
+            <option value="all">All Items</option>
+            <option value="cocktails">Cocktails</option>
+            <option value="frappes">Frappés</option>
+            <option value="smoothies">Smoothies</option>
+            <option value="hot">Hot Drinks</option>
+            <option value="soft">Soft Drinks</option>
+            <option value="fresh">Fresh Juice</option>
+            <option value="lemonade">Lemonade</option>
+        </select>
+
+        <div class="menu-items" id="menuItems"></div>
     </div>
+
+    <script>
+        const menuData = {
+            cocktails: [
+                { name: 'Red Heaven', description: 'Red Bull, strawberry, passion, grenadine', price: 250 },
+                { name: 'Blue Hawaii', description: 'Strawberry, pineapple, sprite, blue syrup', price: 250 },
+                { name: 'Summer Cocktail', description: 'Peach, coconut, banana', price: 250 },
+                { name: 'Red Punch', description: 'Red Bull, strawberry, blackberry', price: 250 },
+                { name: 'Iceland Cocktail', description: 'Strawberry, bubble gum, Red Bull', price: 250 },
+                { name: 'Dolce Diabolo', description: 'Mango, pear, lemon, soda', price: 250 },
+                { name: 'Virgin Punch', description: 'Pineapple, passion, lemon', price: 250 },
+                { name: 'After Glow', description: 'Orange, pineapple juice, grenadine syrup', price: 250 },
+                { name: 'Bora Bora', description: 'Pineapple, passion, grenadine, lemon', price: 250 },
+                { name: 'Blue Lagoon', description: 'Orange, lemon, coconut', price: 250 },
+                { name: 'Punch Watermelon', description: 'Blackberry, watermelon, lemon, mint, tonic', price: 250 }
+            ],
+            frappes: [
+                { name: 'Ice Coffee', description: 'Coffee, ice, whipped cream', price: 300 },
+                { name: 'Caramel', description: 'Caramel, coffee, ice, whipped cream', price: 300 },
+                { name: 'Mocka', description: 'Coffee, chocolate, ice, whipped cream', price: 300 },
+                { name: 'Speculos', description: 'Coffee, speculos, ice, whipped cream', price: 300 },
+                { name: 'Cafe Latte', description: 'Coffee, vanilla, ice, whipped cream', price: 300 }
+            ],
+            smoothies: [
+                { name: 'Cocktail', description: 'Strawberry, mango, pineapple, passion, orange', price: 250 },
+                { name: 'Tropical', description: 'Mango, passion, peach, orange, pineapple', price: 250 },
+                { name: 'Pina Colada', description: 'Pineapple, coconut', price: 250 },
+                { name: 'Banana Split', description: 'Banana, strawberry, chocolate', price: 250 },
+                { name: 'Fruits', description: 'Strawberry, banana, red fruits, peach, passion', price: 250 }
+            ],
+            hot: [
+                { name: 'Espresso', description: 'Classic espresso shot', price: 100 },
+                { name: 'Long Espresso', description: 'Extended espresso shot', price: 150 },
+                { name: 'Cappuccino', description: 'Espresso with steamed milk', price: 200 },
+                { name: 'Hot Chocolate', description: 'Rich hot chocolate', price: 200 },
+                { name: 'Cafe Mocha', description: 'Coffee with chocolate', price: 200 }
+            ],
+            soft: [
+                { name: 'Can Drink', description: 'Coke - Fanta - Sprite', price: 65 },
+                { name: 'Vimto', description: 'Classic Vimto drink', price: 100 },
+                { name: 'Diet Coke', description: 'Sugar-free cola', price: 100 },
+                { name: 'Red Bull', description: 'Energy drink', price: 250 },
+                { name: 'Mineral Water', description: 'Small', price: 30 }
+            ],
+            fresh: [
+                { name: 'Apple', description: 'Fresh apple juice', price: 250 },
+                { name: 'Carrot', description: 'Fresh carrot juice', price: 250 },
+                { name: 'Orange', description: 'Fresh orange juice', price: 250 },
+                { name: 'Strawberry', description: 'Fresh strawberry juice', price: 250 },
+                { name: 'Kiwi', description: 'Fresh kiwi juice', price: 250 }
+            ],
+            lemonade: [
+                { name: 'Frozen Mint', description: 'Lemon, ice, mint', price: 200 },
+                { name: 'Pink Grapefruit', description: 'Lemon, grapefruit, ice', price: 200 },
+                { name: 'Lemonada', description: 'Lemon & ice', price: 200 }
+            ]
+        };
+
+        function displayMenuItems(category) {
+            const menuContainer = document.getElementById('menuItems');
+            menuContainer.innerHTML = '';
+            
+            let itemsToDisplay = [];
+            
+            if (category === 'all') {
+                Object.values(menuData).forEach(items => {
+                    itemsToDisplay = itemsToDisplay.concat(items);
+                });
+            } else {
+                itemsToDisplay = menuData[category] || [];
+            }
+            
+            itemsToDisplay.forEach(item => {
+                const menuItem = document.createElement('div');
+                menuItem.className = 'menu-item';
+                menuItem.innerHTML = `
+                    <h3>${item.name}</h3>
+                    <p>${item.description}</p>
+                    <div class="price">${item.price}</div>
+                `;
+                menuContainer.appendChild(menuItem);
+            });
+        }
+
+        document.getElementById('categorySelect').addEventListener('change', (e) => {
+            displayMenuItems(e.target.value);
+        });
+
+        // Initial display
+        displayMenuItems('all');
+    </script>
 </body>
 </html>
